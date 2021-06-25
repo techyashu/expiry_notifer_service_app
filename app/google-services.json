@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "202691704669",
+    "project_id": "expiry-notifier-7c33a",
+    "storage_bucket": "expiry-notifier-7c33a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:202691704669:android:7c23f31d1ee6b98d561ab4",
+        "android_client_info": {
+          "package_name": "com.example.expirynotifier"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "202691704669-m327h6f5rsecraad17pgu5qbivnksq4e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLfySQS5Kt46IZH-2D28h_BYY49CNgTA0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "202691704669-m327h6f5rsecraad17pgu5qbivnksq4e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
