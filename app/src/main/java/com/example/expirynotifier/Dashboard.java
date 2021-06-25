@@ -37,7 +37,7 @@ public class Dashboard extends AppCompatActivity
         uidhome=(TextView)findViewById(R.id.uidhome);
 
 //        f=(TextView)findViewById(R.id.res);
-//        datt =(EditText)findViewById(R.id.dat);
+        datt =(EditText)findViewById(R.id.dat);
 
         bt=(Button)findViewById(R.id.add);
 
@@ -78,7 +78,7 @@ public class Dashboard extends AppCompatActivity
     public void searchHere(View view) {
         processsearch(datt.getText().toString());
         //f.setText(datt.getText().toString());
-        Toast.makeText(Dashboard.this, datt.getText().toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(Dashboard.this, datt.getText().toString(), Toast.LENGTH_SHORT).show();
     }
 
     private void processsearch(String s)
@@ -94,12 +94,10 @@ public class Dashboard extends AppCompatActivity
 
                 for (DataSnapshot data:dataSnapshot.getChildren()){
 
-
-                    itemInfo models=data.getValue(itemInfo.class);
-                    String itemm = models.getItemm();
-                    String datee = models.getDatee();
+                    String key = data.getKey();
+                    String name = data.child("item").getValue(String.class);
                     //f.setText(itemm);
-                    Toast.makeText(Dashboard.this, itemm, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Dashboard.this, name, Toast.LENGTH_SHORT).show();
 
 
                 }
