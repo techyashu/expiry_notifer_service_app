@@ -6,18 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".Dashboard">
 
-    <!--    <TextView-->
-<!--        android:id="@+id/res"-->
-<!--        android:layout_width="231dp"-->
-<!--        android:layout_height="30dp"-->
-<!--        android:gravity="center_horizontal"-->
-<!--        android:text="Your Search Results"-->
-<!--        android:textStyle="bold"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:layout_constraintVertical_bias="0.349" />-->
+        <TextView
+        android:id="@+id/res"
+        android:layout_width="231dp"
+        android:layout_height="30dp"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.349" />
 
     <TextView
         android:id="@+id/textView3"

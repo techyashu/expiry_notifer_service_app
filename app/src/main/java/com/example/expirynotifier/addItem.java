@@ -112,11 +112,4 @@ public class addItem extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-
 }

@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -18,6 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Dashboard extends AppCompatActivity
 {
@@ -36,7 +41,7 @@ public class Dashboard extends AppCompatActivity
         emailhome=(TextView)findViewById(R.id.email_home);
         uidhome=(TextView)findViewById(R.id.uidhome);
 
-//        f=(TextView)findViewById(R.id.res);
+       f=(TextView)findViewById(R.id.res);
         datt =(EditText)findViewById(R.id.dat);
 
         bt=(Button)findViewById(R.id.add);
@@ -75,8 +80,14 @@ public class Dashboard extends AppCompatActivity
         //startActivity(new Intent(Dashboard.this, yourItems.class));
     }
 
+    @SuppressLint("SimpleDateFormat")
     public void searchHere(View view) {
-        processsearch(datt.getText().toString());
+        Date todayDat = new Date();
+        String todayDate;
+        todayDate = new SimpleDateFormat("MM/dd/yy").format(todayDat);
+        processsearch(todayDate);
+        //Toast.makeText(getApplicationContext(),todayDate,Toast.LENGTH_LONG).show();
+        //processsearch(datt.getText().toString());
         //f.setText(datt.getText().toString());
         //Toast.makeText(Dashboard.this, datt.getText().toString(), Toast.LENGTH_SHORT).show();
     }
@@ -96,9 +107,12 @@ public class Dashboard extends AppCompatActivity
 
                     String key = data.getKey();
                     String name = data.child("item").getValue(String.class);
-                    //f.setText(itemm);
                     Toast.makeText(Dashboard.this, name, Toast.LENGTH_SHORT).show();
+                    f.setText(name);
 
+                    OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(MyWorker.class).addTag("ab")
+                            .build();
+                    WorkManager.getInstance().enqueue(workRequest);
 
                 }
 
@@ -112,13 +126,6 @@ public class Dashboard extends AppCompatActivity
 
 
 
-//        FirebaseRecyclerOptions<model> options =
-//                new FirebaseRecyclerOptions.Builder<model>()
-//                        .setQuery(FirebaseDatabase.getInstance().getReference().child("Users").child(id).orderByChild("date").equalTo(s), model.class)
-//                        .build();
-
-        //myadapter adapter = new myadapter(options);
-        //myadapter.getDate()
 
     }
 
