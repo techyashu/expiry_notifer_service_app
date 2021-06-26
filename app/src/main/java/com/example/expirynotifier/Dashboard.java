@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.work.OneTimeWorkRequest;
+import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class Dashboard extends AppCompatActivity
 {
@@ -30,6 +31,8 @@ public class Dashboard extends AppCompatActivity
     private EditText datt;
     String id = "";
     private Button bt;
+
+
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -41,7 +44,7 @@ public class Dashboard extends AppCompatActivity
         emailhome=(TextView)findViewById(R.id.email_home);
         uidhome=(TextView)findViewById(R.id.uidhome);
 
-       f=(TextView)findViewById(R.id.res);
+        f=(TextView)findViewById(R.id.res);
         datt =(EditText)findViewById(R.id.dat);
 
         bt=(Button)findViewById(R.id.add);
@@ -59,6 +62,14 @@ public class Dashboard extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
+
+                final PeriodicWorkRequest.Builder myWorkBuilder =
+                        new PeriodicWorkRequest.Builder(MyWorker.class, 15,
+                                TimeUnit.MINUTES).addTag("a");
+
+                PeriodicWorkRequest myWork = myWorkBuilder.build();
+                WorkManager.getInstance().enqueue(myWork);
 
 
     }
@@ -80,6 +91,8 @@ public class Dashboard extends AppCompatActivity
         //startActivity(new Intent(Dashboard.this, yourItems.class));
     }
 
+
+
     @SuppressLint("SimpleDateFormat")
     public void searchHere(View view) {
         Date todayDat = new Date();
@@ -91,6 +104,7 @@ public class Dashboard extends AppCompatActivity
         //f.setText(datt.getText().toString());
         //Toast.makeText(Dashboard.this, datt.getText().toString(), Toast.LENGTH_SHORT).show();
     }
+
 
     private void processsearch(String s)
     {
@@ -110,9 +124,6 @@ public class Dashboard extends AppCompatActivity
                     Toast.makeText(Dashboard.this, name, Toast.LENGTH_SHORT).show();
                     f.setText(name);
 
-                    OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(MyWorker.class).addTag("ab")
-                            .build();
-                    WorkManager.getInstance().enqueue(workRequest);
 
                 }
 
