@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
@@ -69,7 +70,7 @@ public class Dashboard extends AppCompatActivity
                                 TimeUnit.MINUTES).addTag("a");
 
                 PeriodicWorkRequest myWork = myWorkBuilder.build();
-                WorkManager.getInstance().enqueue(myWork);
+                WorkManager.getInstance().enqueueUniquePeriodicWork("a", ExistingPeriodicWorkPolicy.KEEP, myWork);
 
 
     }

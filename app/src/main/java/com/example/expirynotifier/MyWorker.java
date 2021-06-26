@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.CountDownLatch;
 
 
 public class MyWorker extends Worker {
@@ -31,12 +32,13 @@ public class MyWorker extends Worker {
     public MyWorker(@NotNull Context context,@NotNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
-
+    CountDownLatch  latch;
     private String UserID ="";
 
     @NonNull
     @Override
     public Result doWork() {
+        latch = new CountDownLatch(1);
 
 
         //displayNotification("Expiry Notifier", "Item Added");
@@ -49,9 +51,14 @@ public class MyWorker extends Worker {
 //        }
 //
 //        displayNotification("To be Expired", "Hey I finished my work");
-
+        try {
+            latch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return Result.success();
     }
+
 
     @SuppressLint("SimpleDateFormat")
     private void managerFunc() {
@@ -78,6 +85,7 @@ public class MyWorker extends Worker {
         notificationManager.notify(1, notification.build());
     }
 
+
     private void processsearch(String s)
     {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -92,19 +100,25 @@ public class MyWorker extends Worker {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+                if(!dataSnapshot.exists())
+                    latch.countDown();
+
                 for (DataSnapshot data:dataSnapshot.getChildren()){
 
                     String key = data.getKey();
                     String name = data.child("item").getValue(String.class);
                     displayNotification("Expiry Notifier", "Item Added");
+                    latch.countDown();
+
 
                 }
+
 
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-
+                latch.countDown();
             }
         });
 
