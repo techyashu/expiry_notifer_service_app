@@ -65,12 +65,12 @@ public class Dashboard extends AppCompatActivity
         });
 
 
-                final PeriodicWorkRequest.Builder myWorkBuilder =
+                final PeriodicWorkRequest myWorkBuilder =
                         new PeriodicWorkRequest.Builder(MyWorker.class, 15,
-                                TimeUnit.MINUTES).addTag("a");
+                                TimeUnit.MINUTES).addTag("ashu").build();
 
-                PeriodicWorkRequest myWork = myWorkBuilder.build();
-                WorkManager.getInstance().enqueueUniquePeriodicWork("a", ExistingPeriodicWorkPolicy.KEEP, myWork);
+                //PeriodicWorkRequest myWork = myWorkBuilder.build();
+                WorkManager.getInstance().enqueueUniquePeriodicWork("ashu", ExistingPeriodicWorkPolicy.KEEP, myWorkBuilder);
 
 
     }
