@@ -10,6 +10,6 @@
     <color name="borderColor">#31A4D8</color>
     <color name="buttonColor">#FFC107</color>
     <color name="buttonbg">#FFC107</color>
-    <color name="back">#2BAE66</color>
+    <color name="back">	#adefd1</color>
 
 </resources>

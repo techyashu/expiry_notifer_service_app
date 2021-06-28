@@ -24,6 +24,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 
 
@@ -73,16 +74,18 @@ public class MyWorker extends Worker {
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("simplifiedcoding", "simplifiedcoding", NotificationManager.IMPORTANCE_DEFAULT);
+            NotificationChannel channel = new NotificationChannel("expiry", "expiry", NotificationManager.IMPORTANCE_DEFAULT);
             notificationManager.createNotificationChannel(channel);
         }
 
-        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), "simplifiedcoding")
+        NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), "expiry")
                 .setContentTitle(title)
                 .setContentText(task)
-                .setSmallIcon(R.mipmap.ic_launcher);
+                .setSmallIcon(R.drawable.ice_cream);
 
-        notificationManager.notify(1, notification.build());
+        Random random = new Random();
+        int m = random.nextInt(9999 - 1000) + 1000;
+        notificationManager.notify(m, notification.build());
     }
 
 
@@ -98,7 +101,7 @@ public class MyWorker extends Worker {
 
         query.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
 
                 if(!dataSnapshot.exists())
                     latch.countDown();
@@ -107,7 +110,7 @@ public class MyWorker extends Worker {
 
                     String key = data.getKey();
                     String name = data.child("item").getValue(String.class);
-                    displayNotification("Expiry Notifier", "Item Added");
+                    displayNotification(name, "Getting Expired Tomorrow");
                     latch.countDown();
 
 

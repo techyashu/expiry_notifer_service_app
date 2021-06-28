@@ -9,8 +9,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkManager;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -101,14 +98,14 @@ public class addItem extends AppCompatActivity {
         dbreference.push().setValue(map);
         item.setText("");
         edittext.setText("");
-        Date todayDat = new Date();
-        String todayDate;
-        todayDate = new SimpleDateFormat("MM/dd/yy  hh:mm:ss a").format(todayDat);
-        Toast.makeText(getApplicationContext(),todayDate,Toast.LENGTH_LONG).show();
+//        Date todayDat = new Date();
+//        String todayDate;
+//        todayDate = new SimpleDateFormat("MM/dd/yy  hh:mm:ss a").format(todayDat);
+        Toast.makeText(getApplicationContext(),"Item Added",Toast.LENGTH_LONG).show();
 
-        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(MyWorker.class).addTag("ab")
-                .build();
-        WorkManager.getInstance().enqueue(workRequest);
+//        OneTimeWorkRequest workRequest = new OneTimeWorkRequest.Builder(MyWorker.class).addTag("ab")
+//                .build();
+//        WorkManager.getInstance().enqueue(workRequest);
 
     }
 
