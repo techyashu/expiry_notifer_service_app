@@ -66,8 +66,8 @@ public class Dashboard extends AppCompatActivity
 
 
                 final PeriodicWorkRequest myWorkBuilder =
-                        new PeriodicWorkRequest.Builder(MyWorker.class, 15,
-                                TimeUnit.MINUTES).addTag("ashu").build();
+                        new PeriodicWorkRequest.Builder(MyWorker.class, 24,
+                                TimeUnit.HOURS).addTag("ashu").build();
 
                 //PeriodicWorkRequest myWork = myWorkBuilder.build();
                 WorkManager.getInstance().enqueueUniquePeriodicWork("ashu", ExistingPeriodicWorkPolicy.KEEP, myWorkBuilder);
