@@ -1,13 +1,16 @@
 package com.example.expirynotifier;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         t1=(TextInputLayout)findViewById(R.id.email);
         t2=(TextInputLayout)findViewById(R.id.pwd);
         bar=(ProgressBar)findViewById(R.id.progressBar);
+
+        Window window = MainActivity.this.getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(ContextCompat.getColor(MainActivity.this,R.color.yellowGreen));
+        }
 
     }
 

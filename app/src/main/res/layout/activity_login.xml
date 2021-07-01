@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
-    tools:context=".login">
+    android:background="@color/white"
+    tools:context=".Login">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,12 +17,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.06"
-        app:srcCompat="@drawable/user" />
+        app:srcCompat="@drawable/profile" />
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="349dp"
+        android:layout_width="318dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Your Email"
-            android:textColorHint="@color/borderColor">
+            android:textColorHint="@color/green">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:hint="Your Password"
-            android:textColorHint="@color/borderColor"
+            android:textColorHint="@color/green"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -63,18 +63,16 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            android:layout_width="201dp"
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="129dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@color/buttonbg"
-            android:fontFamily="sans-serif-condensed"
+            android:background="@drawable/rounded_corners"
             android:onClick="signinhere"
             android:text="LOGIN"
-            android:textColor="#000"
-            android:textSize="25sp" />
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
     </LinearLayout>
 

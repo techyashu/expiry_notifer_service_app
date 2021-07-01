@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,8 +26,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Dashboard extends AppCompatActivity
 {
-    TextView emailhome,uidhome,f;
-    private EditText datt;
+    //TextView emailhome,uidhome;
     String id = "";
     private Button bt;
 
@@ -42,18 +39,17 @@ public class Dashboard extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        emailhome=(TextView)findViewById(R.id.email_home);
-        uidhome=(TextView)findViewById(R.id.uidhome);
+        //emailhome=(TextView)findViewById(R.id.email_home);
+        //uidhome=(TextView)findViewById(R.id.uidhome);
 
-        f=(TextView)findViewById(R.id.res);
-        datt =(EditText)findViewById(R.id.dat);
+
 
         bt=(Button)findViewById(R.id.add);
 
         id = getIntent().getStringExtra("uid");
 
-        emailhome.setText(getIntent().getStringExtra("email"));
-        uidhome.setText("UID :"+ getIntent().getStringExtra("uid"));
+        //emailhome.setText(getIntent().getStringExtra("email"));
+        //uidhome.setText("UID :"+ getIntent().getStringExtra("uid"));
 
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +118,7 @@ public class Dashboard extends AppCompatActivity
                     String key = data.getKey();
                     String name = data.child("item").getValue(String.class);
                     Toast.makeText(Dashboard.this, name, Toast.LENGTH_SHORT).show();
-                    f.setText(name);
+                    //f.setText(name);
 
 
                 }

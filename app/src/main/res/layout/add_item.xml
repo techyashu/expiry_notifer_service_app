@@ -8,7 +8,13 @@
     tools:context=".addItem">
 
 
-
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="222dp"
+        android:layout_height="392dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70sp"
+        app:srcCompat="@drawable/soda" />
 
     <EditText
         android:layout_width="300dp"
@@ -36,6 +42,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corners"
+        android:layout_marginTop="10dp"
         android:text="Add Item"
         android:id="@+id/bt"
         android:onClick="addItemm"
@@ -46,7 +54,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.818"/>
-
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

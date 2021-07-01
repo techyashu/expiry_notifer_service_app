@@ -11,6 +11,8 @@
     <color name="buttonColor">#FFC107</color>
     <color name="buttonbg">#FFC107</color>
     <color name="back">#adefd1</color>
-    <color name="green">#00FF00</color>
-
+    <color name="green">#59981A</color>
+    <color name="lime">#81B622</color>
+    <color name="yellowGreen">#ECF87F</color>
+    <color name="olive">#3D550C</color>
 </resources>

@@ -83,7 +83,7 @@ public class MyWorker extends Worker {
         NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), "expiry")
                 .setContentTitle(title)
                 .setContentText(task)
-                .setSmallIcon(R.drawable.ice_cream);
+                .setSmallIcon(R.drawable.soda);
 //                .setStyle(new NotificationCompat.BigPictureStyle()
 //                .bigPicture(bm));
 
