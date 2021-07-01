@@ -78,10 +78,14 @@ public class MyWorker extends Worker {
             notificationManager.createNotificationChannel(channel);
         }
 
+//        Bitmap bm = BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.ice_cream);
+
         NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), "expiry")
                 .setContentTitle(title)
                 .setContentText(task)
                 .setSmallIcon(R.drawable.ice_cream);
+//                .setStyle(new NotificationCompat.BigPictureStyle()
+//                .bigPicture(bm));
 
         Random random = new Random();
         int m = random.nextInt(9999 - 1000) + 1000;
@@ -110,9 +114,13 @@ public class MyWorker extends Worker {
 
                     String key = data.getKey();
                     String name = data.child("item").getValue(String.class);
-                    displayNotification(name, "Getting Expired Tomorrow");
+                    displayNotification(name, "Getting Expired Today");
                     latch.countDown();
-
+                            try {
+                            Thread.sleep(5000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
 
                 }
 
