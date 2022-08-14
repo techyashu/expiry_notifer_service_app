@@ -12,4 +12,4 @@
 
 <img src="https://github.com/techyashu/ashu/blob/master/EXPIRY%20NOTIFIER%20SERVICE%20(6).gif" alt="1">
 
-Install the App in your Android Phone : https://rb.gy/iywejw
+## Install the App in your Android Phone : https://rb.gy/iywejw
